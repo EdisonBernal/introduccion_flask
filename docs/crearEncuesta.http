@@ -1,0 +1,9 @@
+POST http://localhost:5000/encuesta
+content-Type: application/json
+
+{
+    "idusu": 3,
+    "titulo": "Encuesta1",
+    "descripcion": "Prueba de encuesta 1",
+    "imagen": "img1"
+}

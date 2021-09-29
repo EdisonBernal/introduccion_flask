@@ -1,0 +1,7 @@
+POST http://localhost:5000/seccion
+content-Type: application/json
+
+{
+    "idenc": 2,
+    "seccion": "Seccion1"    
+}

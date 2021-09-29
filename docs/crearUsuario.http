@@ -4,5 +4,5 @@ content-Type: application/json
 {
     "nombres": "Edison Bernal",
     "email": "edisonbernal2020@itp.edu.co",
-    "contrasena": "123456"
+    "contrasena": "1234"
 }

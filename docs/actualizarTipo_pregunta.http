@@ -1,0 +1,6 @@
+PUT http://localhost:5000/tipo_pregunta/4
+content-Type: application/json
+
+{
+    "tipopregunta": "Unica Respuesta"    
+}
