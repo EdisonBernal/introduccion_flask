@@ -242,4 +242,57 @@ def eliminarTipo_pregunta(id):
         "mensaje": "tipo de pregunta eliminada correctamente"                      
     })
 
+@app.post('/opcion_pregunta')
+def CrearOpcion_pregunta():
+    
+    datos = request.json
+    cursor = db.cursor()
+    cursor.execute('''INSERT INTO opcion_pregunta(opcpregunta)
+        VALUES(%s)''',(
+        datos['opcpregunta'],
+        ))
+
+    db.commit()
+
+    return jsonify({
+        "mensaje": "Opcion de pregunta creada exitosamente"
+    })
+
+@app.get('/opcion_pregunta')
+def listarOpcion_pregunta():
+    cursor = db.cursor(dictionary=True)
+
+    cursor.execute('select * from opcion_pregunta')
+    opcion_pregunta = cursor.fetchall()
+    return jsonify(opcion_pregunta)
+
+@app.put('/opcion_pregunta/<id>')
+def actualizarOpcion_pregunta(id):
+    datos = request.json
+
+    cursor = db.cursor()
+
+    cursor.execute('''UPDATE opcion_pregunta set opcpregunta=%s where idopcpreg=%s''',(
+            datos['opcpregunta'],
+            id
+        ))
+
+    db.commit()
+
+    return jsonify({
+        "mensaje": "Opcion de pregunta actualiza
+        da correctamente"
+    })
+
+@app.delete('/opcion_pregunta/<id>')
+def eliminarOpcion_pregunta(id):
+        
+    cursor = db.cursor()
+    cursor.execute('''DELETE FROM opcion_pregunta WHERE idtopcpreg=%s''', (id,))
+    db.commit()
+    
+    return jsonify({
+        "mensaje": "Opcion de pregunta eliminada correctamente"                      
+    })
+
 app.run(debug=True)

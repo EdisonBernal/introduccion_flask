@@ -1,0 +1,6 @@
+PUT http://localhost:5000/opcion_pregunta/4
+content-Type: application/json
+
+{
+    "opcpregunta": "Unica Respuesta"    
+}
