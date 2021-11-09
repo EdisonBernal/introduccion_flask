@@ -1,0 +1,8 @@
+PUT http://localhost:5000/pregunta/11
+content-Type: application/json
+
+{
+    "idsec": 16,
+    "idtpreg": 4,
+    "pregunta": "prueba update pregunta1"
+}

@@ -1,2 +1,2 @@
-DELETE http://localhost:5000/encuesta/2
+DELETE http://localhost:5000/encuesta/5
 content-Type: application/json

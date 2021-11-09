@@ -53,7 +53,7 @@ def actualizarUsuario(id):
     cursor = db.cursor()
 
     cursor.execute('''UPDATE usuario set nombre=%s, 
-        email=%s, contrasena=%s where id=%s''',(
+        email=%s, contrasena=%s where idusu=%s''',(
             datos['nombre'],
             datos['email'],
             datos['contrasena'],
@@ -70,7 +70,7 @@ def actualizarUsuario(id):
 def eliminarUsuario(id):
         
     cursor = db.cursor()
-    cursor.execute('''DELETE FROM usuario WHERE id=%s''', (id,))
+    cursor.execute('''DELETE FROM usuario WHERE idusu=%s''', (id,))
     db.commit()
     
     return jsonify({
@@ -189,6 +189,61 @@ def eliminarseccion(id):
     return jsonify({
         "mensaje": "seccion eliminada correctamente"                      
     })
+@app.post('/pregunta')
+def CrearPregunta():
+    
+    datos = request.json
+    cursor = db.cursor()
+    cursor.execute('''INSERT INTO pregunta(idsec,idtpreg,pregunta) 
+        VALUES(%s,%s,%s)''',(        
+        datos['idsec'],
+        datos['idtpreg'],
+        datos['pregunta']
+        ))
+
+    db.commit()
+
+    return jsonify({
+        "mensaje": "Pregunta creada exitosamente"
+    })
+
+@app.get('/pregunta')
+def listarPregunta():
+    cursor = db.cursor(dictionary=True)
+
+    cursor.execute('select * from pregunta')
+    pregunta = cursor.fetchall()
+    return jsonify(pregunta)
+
+@app.put('/pregunta/<id>')
+def actualizarPregunta(id):
+    datos = request.json
+
+    cursor = db.cursor()
+
+    cursor.execute('''UPDATE pregunta set idsec=%s,idtpreg=%s,pregunta=%s where idpreg=%s''',(
+            datos['idsec'],
+            datos['idtpreg'],
+            datos['pregunta'],
+            id
+        ))
+
+    db.commit()
+
+    return jsonify({
+        "mensaje": "Pregunta actualizada correctamente"
+    })
+
+@app.delete('/pregunta/<id>')
+def eliminarPregunta(id):
+        
+    cursor = db.cursor()
+    cursor.execute('''DELETE FROM pregunta WHERE idpreg=%s''', (id,))
+    db.commit()
+    
+    return jsonify({
+        "mensaje": "Pregunta eliminada correctamente"                      
+    })
 
 @app.post('/tipo_pregunta')
 def CrearTipo_pregunta():
@@ -280,8 +335,7 @@ def actualizarOpcion_pregunta(id):
     db.commit()
 
     return jsonify({
-        "mensaje": "Opcion de pregunta actualiza
-        da correctamente"
+        "mensaje": "Opcion de pregunta actualizada correctamente"
     })
 
 @app.delete('/opcion_pregunta/<id>')

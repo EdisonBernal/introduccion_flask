@@ -1,7 +1,7 @@
-PUT http://localhost:5000/seccion/4
+PUT http://localhost:5000/seccion/16
 content-Type: application/json
 
 {
-    "idenc": 1,
-    "seccion": "prueba update seccion1"    
+    "idenc": 8,
+    "seccion": "prueba update seccion2"    
 }

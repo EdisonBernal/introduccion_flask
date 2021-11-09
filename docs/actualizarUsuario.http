@@ -1,8 +1,8 @@
-PUT http://localhost:5000/usuarios/14
+PUT http://localhost:5000/usuarios/17
 content-Type: application/json
 
 {
     "nombre": "Bernal Meneses",
     "email": "edinsonbernal1582@gmail.com",
-    "contrasena": "0123456789"
+    "contrasena": "123456789"
 }
